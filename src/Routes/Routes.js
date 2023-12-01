@@ -4,6 +4,14 @@ const router = express.Router();
 import { createAuthor, loginUser } from '../Controllers/AuthorController.js';
 import { createBlog } from '../Controllers/BlogController.js'
 
+// * Checking the server
+
+router.get('/test', (req, res) => {
+    console.log('Every things is working fine!')
+
+    return res.json('Welcome! Every thing is working Fine')
+})
+
 // * Creating the User
 router.post('/authors/create', createAuthor);
 
