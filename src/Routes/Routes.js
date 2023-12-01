@@ -2,7 +2,7 @@ import express from 'express';
 const router = express.Router();
 
 import { createAuthor, loginUser } from '../Controllers/AuthorController.js';
-import { createBlog } from '../Controllers/BlogController.js'
+import { createBlog, getBlogs, updateBlog } from '../Controllers/BlogController.js'
 
 // * Checking the server
 
@@ -21,11 +21,11 @@ router.post('/login', loginUser);
 // * Creating the Blog 
 router.post('/blogs/create', createBlog)
 
-// // * Getting All the Blogs through Filters
-// router.get('/blogs/view', getBlogs)
+// * Getting All the Blogs through Filters
+router.get('/blogs/view', getBlogs)
 
-// // * Updating a Blog 
-// router.put('/blogs/update/:blogId', updateBlog)
+// * Updating a Blog 
+router.put('/blogs/update/:blogId', updateBlog)
 
 
 
