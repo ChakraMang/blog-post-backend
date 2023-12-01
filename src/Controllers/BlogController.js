@@ -41,7 +41,7 @@ export const createBlog = async (req, res) => {
     }
   }
 
-  export const getBlog = async (req, res) => {
+  export const getBlogs = async (req, res) => {
     try {
       if (Object.keys(req.query).length == 0) {
         let result = await Blog.find({ isDeleted: false, isPublished: true })
