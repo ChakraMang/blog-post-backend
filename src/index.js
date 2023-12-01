@@ -10,13 +10,26 @@ dotenv.config();
 const PORT = process.env.PORT || 5000;
 const mongodbUrl = process.env.MONGO_DB_URL;
 // Connect to MongoDB (replace with your actual MongoDB connection string)
-mongoose.connect(`${mongodbUrl}/Blog-Post`).then(() => console.log("MongoDB is connected")).catch( err => console.log(err)) ;
+
+const connectDb = async () => {
+  try {
+    const connection = await mongoose.connect(mongodbUrl);
+    console.log(connection.connection.host);
+  } catch (error) {
+    console.log(error);
+    process.exit(1)
+    
+  }
+}
+
 
 app.use(express.json());
 
 app.use(cors());
 app.use("/", router);
 
-app.listen(PORT, () => {
-  console.log(`Server is running on Port: ${PORT}`);
-});
+connectDb().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server is running on Port: ${PORT}`);
+  });  
+})
