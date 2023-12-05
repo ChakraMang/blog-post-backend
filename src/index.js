@@ -25,7 +25,9 @@ const connectDb = async () => {
 
 app.use(express.json());
 
-app.use(cors());
+app.options("*", cors({ origin: 'http://localhost:8000', optionsSuccessStatus: 200 }));
+
+app.use(cors({ origin: "http://localhost:8000", optionsSuccessStatus: 200 }));
 app.use("/", router);
 
 connectDb().then(() => {
