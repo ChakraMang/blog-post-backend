@@ -2,20 +2,10 @@ import mongoose from "mongoose";
 
 const authorSchema = new mongoose.Schema(
   {
-    fname: {
+    name: {
       type: String,
       trim: true,
       required: [true, "Please enter firstname"],
-    },
-    lname: {
-      type: String,
-      trim: true,
-      required: [true, "Please enter lastname"],
-    },
-    title: {
-      type: String,
-      required: [true, "Please enter title"],
-      enum: ["Mr", "Mrs", "Miss"],
     },
     email: {
       type: String,
